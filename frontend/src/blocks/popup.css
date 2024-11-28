@@ -1,0 +1,280 @@
+.popup {
+  background-color: #fff;
+  display: none;
+  position: fixed;
+  top: 195px;
+  right: calc(50% - 215px);
+  max-width: 430px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  width: 100%;
+  z-index: 10;
+}
+.popup-imagen {
+  display: none;
+  position: fixed;
+  top: 90px;
+  right: calc(25% - 12.5vw);
+  left: calc(25% - 12.5vw);
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  width: fit-content;
+  z-index: 20;
+}
+
+.popup-notification {
+  display: none;
+  position: fixed;
+  top: 90px;
+  right: calc(25% - 12.5vw);
+  left: calc(25% - 12.5vw);
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 430px;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  z-index: 20;
+}
+
+.popup-delete {
+  display: none;
+  position: fixed;
+  top: 90px;
+  right: calc(25% - 12.5vw);
+  left: calc(25% - 12.5vw);
+  margin: 0 auto;
+  max-height: 181px;
+  max-width: 430px;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 20;
+  background: #ffffff;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+.popup-delete__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: left;
+  margin: 0px 0px 0px 36px;
+}
+.popup-delete__button {
+  background: #000;
+  width: 358px;
+  height: 50px;
+  align-self: center;
+  color: #fff;
+  margin: 38px auto 36px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.popup-show {
+  display: flex;
+}
+.popup__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+}
+.popup__button-close {
+  position: relative;
+  bottom: 50px;
+  left: 430px;
+  background-color: black;
+  background-image: url("../images/close-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: flex-end;
+  max-width: 40px;
+  height: 40px;
+  width: 100%;
+  border-style: none;
+  cursor: pointer;
+  z-index: 10;
+}
+.popup__button-close:hover {
+  opacity: 70%;
+}
+
+.popup-imagen__review {
+  position: relative;
+  max-width: 75vw;
+  max-height: 75vh;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin: 0;
+  z-index: 10;
+}
+.popup-imagen__subtitle {
+  position: relative;
+  color: #ffffff;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  align-self: flex-start;
+  text-align: left;
+  z-index: 10;
+}
+.popup-imagen__button-close {
+  position: relative;
+  left: 40px;
+  background-color: black;
+  background-image: url("../images/close-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: flex-end;
+  max-width: 40px;
+  height: 40px;
+  width: 100%;
+  border-style: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.popup-image__button-close:hover {
+  opacity: 70%;
+}
+
+.popup-delete__button-close {
+  position: relative;
+  left: 40px;
+  bottom: 40px;
+  background-color: black;
+  background-image: url("../images/close-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: flex-end;
+  max-width: 40px;
+  height: 40px;
+  width: 100%;
+  border-style: none;
+  cursor: pointer;
+  z-index: 10;
+}
+.popup-delete__button-close:hover {
+  opacity: 70%;
+}
+
+.popup-notification__text {
+  position: relative;
+  color: #000000;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  align-self: center;
+  text-align: center;
+  z-index: 10;
+}
+.popup-notification__button-close {
+  position: relative;
+  left: 40px;
+  bottom: 40px;
+  background-color: black;
+  background-image: url("../images/close-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: flex-end;
+  max-width: 40px;
+  height: 40px;
+  width: 100%;
+  border-style: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.popup-notification__image {
+  position: relative;
+  max-width: 120px;
+  max-height: 120px;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  margin: 0;
+  background-color: #ffffff;
+  z-index: 10;
+}
+
+.popup-notification__button-close:hover {
+  opacity: 70%;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1024px) {
+  .popup {
+    top: 123px;
+    right: calc(50% - 141px);
+    max-width: 282px;
+    margin: 0;
+  }
+  .popup-show {
+    display: flex;
+  }
+  .popup__button-close {
+    bottom: 53px;
+    left: 256px;
+    max-width: 26px;
+    width: 100%;
+    height: 26px;
+  }
+  .popup-imagen__button-close {
+    max-width: 30px;
+    width: 100%;
+    height: 30px;
+  }
+
+  .popup-delete__button-close {
+    max-width: 30px;
+    width: 100%;
+    height: 30px;
+  }
+  .popup-delete__button {
+    max-width: 230px;
+    width: 100%;
+    height: 30px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .popup-delete__title {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .popup-notification {
+    max-width: 280px;
+    margin: 0;
+  }
+  .popup-notification__button-close {
+    left: 0px;
+    align-self: center;
+    max-width: 30px;
+    height: 30px;
+  }
+
+  .popup-notification__text {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,61 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  margin: 45px auto 0;
+  max-width: 880px;
+  width: 100%;
+  border-bottom: 1px solid rgba(54, 54, 54, 0.7); /* Se hace borde solido con una opacidad de 0.7 según el dato del brief*/
+  justify-content: flex-end;
+  row-gap: 10px;
+}
+
+.header__logo {
+  display: flex;
+  height: 33px;
+  max-width: 173px;
+  margin-bottom: 41px;
+  justify-content: flex-start;
+  position: relative;
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    flex-direction: column-reverse;
+    margin: 28px auto 0;
+    max-width: 320px;
+  }
+
+  .header__logo {
+    display: flex;
+    height: 24px;
+    max-width: 126px;
+    width: 100%;
+    margin-bottom: 32px;
+    margin-left: 27px;
+    justify-content: flex-start;
+    position: relative;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  .header {
+    margin: 28px auto 0;
+    max-width: 320px;
+  }
+
+  .header__logo {
+    display: flex;
+    height: 24px;
+    max-width: 126px;
+    width: 100%;
+    margin-bottom: 32px;
+    margin-left: 27px;
+    justify-content: flex-start;
+    position: relative;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .header {
+    margin: 28px auto 0;
+    max-width: 584px;
+  }
+}

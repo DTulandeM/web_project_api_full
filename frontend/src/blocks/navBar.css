@@ -1,0 +1,72 @@
+.navBar {
+  display: flex;
+  flex-direction: row-reverse;
+  max-width: 880px;
+  width: 100%;
+}
+
+.navBar__text {
+  display: inline-block;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  margin-right: 23px;
+}
+.navBar__button {
+  display: inline-block;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  text-align: center;
+  height: 50px;
+  background: none;
+  border: none;
+  padding: 4px;
+  margin: 4px 0;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none;
+}
+.navBar__button:hover {
+  opacity: 0.6;
+}
+
+.navBar__link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #ffffff;
+  text-align: right;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navBar__link:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 320px) {
+  .navBar {
+    flex-direction: column-reverse;
+    align-self: center;
+    max-width: 100px;
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .navBar__text {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .navBar__button {
+    width: 150px;
+  }
+}

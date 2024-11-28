@@ -1,0 +1,129 @@
+.elements {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  grid-template-rows: auto auto auto;
+  row-gap: 17px;
+  column-gap: 20px;
+  margin: 50px auto 0;
+  max-width: 880px;
+  width: 100%;
+}
+.element {
+  background-color: #fff;
+  max-width: 282px;
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    "element__image element__button-trash"
+    "element__title element__button-like";
+  grid-template-columns: 242px 39px;
+  grid-template-rows: auto auto;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+.element__image {
+  background-color: #000;
+  max-width: 282px;
+  width: 100%;
+  height: 282px;
+  object-fit: cover;
+  align-self: flex-start;
+  grid-area: element__image;
+  grid-column: 1/3;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.element__title {
+  grid-area: element__title;
+  color: #000000;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  align-self: center;
+  margin: 25px 0 31px 21px;
+  max-width: 225px;
+}
+.element__button-trash {
+  width: 18px;
+  height: 19.3px;
+  background-image: url("../images/Trash.svg");
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+  align-self: flex-start;
+  margin: 18px 15px 31px 0;
+  background-color: rgba(0, 0, 0, 0);
+  grid-area: element__button-trash;
+  z-index: 1;
+}
+.element__button-trash_hidden {
+  visibility: hidden;
+}
+
+.element__button-like {
+  width: 21px;
+  height: 19px;
+  background-image: url("../images/like-button.svg");
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+  grid-area: element__button-like;
+  align-self: flex-start;
+  margin: 25px 15px 31px 0;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1;
+}
+
+.element__button-like:hover {
+  opacity: 0.5;
+}
+
+.element__button-like_active {
+  background-image: url("../images/like_heartfull.svg");
+}
+.element__likes {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #000000;
+  grid-area: element__button-like;
+  align-self: flex-end;
+  margin: 3px 25px 22px 5px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 600px) {
+  .elements {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: auto auto auto auto auto auto;
+    row-gap: 20px;
+    margin: 0px auto 0;
+    max-width: 282px;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .elements {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: auto auto auto auto;
+    row-gap: 20px;
+    column-gap: 17px;
+    margin: 0px auto 0;
+    max-width: 584px;
+    width: 100%;
+  }
+}
