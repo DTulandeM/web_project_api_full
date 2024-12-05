@@ -9,19 +9,27 @@ const ERROR_CODE = {
 };
 
 class NotFoundError extends Error {
-  constructor(statusCode, message) {
+  constructor(message) {
     super(message);
-    this.statusCode = statusCode;
+    this.statusCode = ERROR_CODE.NOT_FOUND;
     this.name = "NotFoundError";
   }
 }
 
 class UnauthorizedError extends Error {
-  constructor(statusCode, message) {
+  constructor(message) {
     super(message);
-    this.statusCode = statusCode;
+    this.statusCode = ERROR_CODE.UNAUTHORIZED;
     this.name = "unauthorizedError";
   }
 }
 
-module.exports = { NotFoundError, UnauthorizedError };
+class BadRequestError extends Error {
+  constructor(message) {
+    super(message);
+    this.statusCode = ERROR_CODE.BAD_REQUEST;
+    this.name = "BadRequestError";
+  }
+}
+
+module.exports = { NotFoundError, UnauthorizedError, BadRequestError };

@@ -14,7 +14,6 @@ function PopupWithForm(props) {
       errorClass: "form__error_visible",
     };
     const formValidator = new FormValidator(formRef.current, settings);
-
     formValidator.enableValidation();
     formValidator._toggleButtonState();
     if (props.isOpen) {

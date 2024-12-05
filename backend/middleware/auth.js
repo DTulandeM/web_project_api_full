@@ -1,10 +1,11 @@
 const jwt = require("jsonwebtoken");
+const { UnauthorizedError } = require("./errorHandler");
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith("Bearer ")) {
-    return res.status(401).send({ message: "Se requiere autorización" });
+    throw new UnauthorizedError("Usuario no cuenta autorización ");
   }
   const token = authorization.replace("Bearer ", "");
 
@@ -12,7 +13,7 @@ module.exports = (req, res, next) => {
   try {
     payload = jwt.verify(token, "super-strong-secret");
   } catch (err) {
-    return res.status(401).send({ message: "Se requiere autorización" });
+    throw new UnauthorizedError("La verificación del usuario fue incorrecta ");
   }
   req.user = payload;
 

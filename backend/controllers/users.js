@@ -15,38 +15,21 @@ const ERROR_CODE = Object.freeze({
   INTERNAL_SERVER: 500,
 });
 
-module.exports.getUsersId = (req, res) => {
+module.exports.getUsersId = (req, res, next) => {
   const { _id } = req.user;
   user
     .findById(_id)
     .then((user) => {
       if (!user) {
-        return res
-          .status(ERROR_CODE.NOT_FOUND)
-          .send({ message: "Usuario no encontrado" });
-      }
-      if (!user) {
-        const message = "El usuario no se encuentra";
-
-        throw new NotFoundError(ERROR_CODE.CONNECTION_REFUSED, message);
+        throw new NotFoundError("El usuario no fue encuentrado");
       }
 
       return res.send(user);
     })
-
-    .catch((err) => {
-      if (err.name === "CastError") {
-        return res
-          .status(ERROR_CODE.BAD_REQUEST)
-          .send({ message: "ID de usuario no válido" });
-      }
-      res
-        .status(ERROR_CODE.INTERNAL_SERVER)
-        .send({ message: "Error del servidor" });
-    });
+    .catch(next);
 };
 
-module.exports.updateUsers = (req, res) => {
+module.exports.updateUsers = (req, res, next) => {
   const { name, about } = req.body;
   user
     .findByIdAndUpdate(
@@ -55,19 +38,10 @@ module.exports.updateUsers = (req, res) => {
       { returnDocument: "after", runValidators: true, new: true }
     )
     .then((user) => res.send(user))
-    .catch((err) => {
-      if (err.name === "ValidationError") {
-        return res.status(ERROR_CODE.BAD_REQUEST).send({
-          message: "Los datos no son suficientes para actualizar el usuario",
-        });
-      }
-      res
-        .status(ERROR_CODE.INTERNAL_SERVER)
-        .send({ message: "Error del servidor" });
-    });
+    .catch(next);
 };
 
-module.exports.updateAvatar = (req, res) => {
+module.exports.updateAvatar = (req, res, next) => {
   const { avatar } = req.body;
   user
     .findByIdAndUpdate(
@@ -76,16 +50,7 @@ module.exports.updateAvatar = (req, res) => {
       { returnDocument: "after", runValidators: true }
     )
     .then((user) => res.send(user))
-    .catch((err) => {
-      if (err.name === "ValidationError") {
-        return res.status(ERROR_CODE.BAD_REQUEST).send({
-          message: "Los datos no son suficientes para actualizar el usuario",
-        });
-      }
-      res
-        .status(ERROR_CODE.INTERNAL_SERVER)
-        .send({ message: "Error del servidor" });
-    });
+    .catch(next);
 };
 
 module.exports.signUpUsers = (req, res) => {
@@ -118,24 +83,11 @@ module.exports.login = (req, res, next) => {
   return user
     .findUserByCredentials(email, password)
     .then((user) => {
-      console.log("user is ", user);
-      if (!user) {
-        const message = "El usuario no se encuentra autorizado";
-
-        throw new UnauthorizedError(ERROR_CODE.UNAUTHORIZED, message);
-      }
       const token = jwt.sign({ _id: user._id }, "super-strong-secret", {
         expiresIn: "7d",
       });
 
       res.send({ token, status: "ok" });
-      console.log(token);
     })
     .catch(next);
-  // .catch((err) => {
-  //   res.status(ERROR_CODE.UNAUTHORIZED).send({
-  //     message: "El usuario no se encuentra autorizado",
-  //     err,
-  //   });
-  // });
 };

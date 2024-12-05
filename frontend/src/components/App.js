@@ -80,17 +80,6 @@ function App() {
         console.log("Error de autenticación: token no recibido");
         handleInfoTooltipOpen();
       }
-
-      // if (res.status === "ok") {
-      //   setUserEmail(email);
-      //   setIsLoggedIn(true);
-      //   console.log(isLoggedIn);
-      //   handleInfoTooltipOpen();
-      //   setTimeout(() => {
-      //     closeAllPopups();
-      //     return <Navigate to="/" />;
-      //   }, 1500);
-      // }
     } catch (error) {
       console.log("Error al intentar iniciar sesión:", error);
       handleInfoTooltipOpen();

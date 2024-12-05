@@ -45,6 +45,8 @@ function EditProfilePopup({
         className="form__input"
         id="profile-name"
         placeholder="Nombre"
+        minLength="2"
+        maxLength="30"
         required
       />
       <span id="profile-name-error" className="form__error-visible"></span>
@@ -56,6 +58,8 @@ function EditProfilePopup({
         className="form__input"
         id="profile-aboutme"
         placeholder="Acerca de mí"
+        minLength="2"
+        maxLength="30"
         required
       />
       <span id="profile-aboutme-error" className="form__error-visible"></span>
