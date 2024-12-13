@@ -1,6 +1,10 @@
 const jwt = require("jsonwebtoken");
 const { UnauthorizedError } = require("./errorHandler");
 
+require("dotenv").config();
+
+const { NODE_ENV = "local", JWT_SECRET = "" } = process.env;
+
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
 
@@ -11,7 +15,10 @@ module.exports = (req, res, next) => {
 
   let payload;
   try {
-    payload = jwt.verify(token, "super-strong-secret");
+    payload = jwt.verify(
+      token,
+      NODE_ENV === "production" ? JWT_SECRET : "super-strong-secret"
+    );
   } catch (err) {
     throw new UnauthorizedError("La verificación del usuario fue incorrecta ");
   }

@@ -6,6 +6,12 @@ const {
   UnauthorizedError,
 } = require("../middleware/errorHandler");
 
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const { NODE_ENV = "local", JWT_SECRET = "" } = process.env;
+
 const ERROR_CODE = Object.freeze({
   CONNECTION_REFUSED: 102,
   CREATED: 201,
@@ -63,7 +69,7 @@ module.exports.signUpUsers = (req, res) => {
       })
     )
     .then((user) => {
-      res.status(ERROR_CODE.CREATED).send({ id: user._id, email: user.email });
+      res.status(ERROR_CODE.CREATED).send({ _id: user._id, email: user.email });
     })
     .catch((err) => {
       if (err.code === 11000) {
@@ -83,9 +89,13 @@ module.exports.login = (req, res, next) => {
   return user
     .findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, "super-strong-secret", {
-        expiresIn: "7d",
-      });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === "production" ? JWT_SECRET : "super-strong-secret",
+        {
+          expiresIn: "7d",
+        }
+      );
 
       res.send({ token, status: "ok" });
     })

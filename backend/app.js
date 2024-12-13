@@ -11,6 +11,22 @@ const { requestLogger, errorLogger } = require("./middleware/logger");
 const { PORT = 3000 } = process.env;
 
 const app = express();
+
+const allowedCors = [
+  "http://dtmonline.mooo.com",
+  "https://www.dtmonline.mooo.com",
+  "http://localhost:3000",
+];
+
+app.use(function (req, res, next) {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
+
+  next();
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -22,11 +38,7 @@ mongoose
   .catch((err) => {
     console.log("algo salio mal", err);
   });
-app.use(
-  cors({
-    origin: "http://localhost:3001",
-  })
-);
+
 app.use(requestLogger);
 app.post("/signup", usersRoutes);
 app.post("/signin", usersRoutes);

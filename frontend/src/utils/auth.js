@@ -1,5 +1,5 @@
-const BASE_URL = "http://localhost:3000";
-
+//const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://api.dtmonline.mooo.com";
 export async function Signup(email, password) {
   try {
     const response = await fetch(`${BASE_URL}/signup  `, {

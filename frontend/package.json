@@ -2,7 +2,6 @@
   "name": "web_project_around_react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://DTulandeM.github.io/web_project_around_react",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -19,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "scp -r build dtulande@34.42.196.22:frontend/"
   },
   "eslintConfig": {
     "extends": [
