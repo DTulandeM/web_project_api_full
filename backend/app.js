@@ -16,7 +16,15 @@ const allowedCors = [
   "http://dtmonline.mooo.com",
   "https://www.dtmonline.mooo.com",
   "http://localhost:3000",
+  "http://localhost:3001",
 ];
+const corsOptions = {
+  origin: "http://localhost:3001",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use(cors(corsOptions));
 
 app.use(function (req, res, next) {
   const { origin } = req.headers;
@@ -43,7 +51,6 @@ app.use(requestLogger);
 app.post("/signup", usersRoutes);
 app.post("/signin", usersRoutes);
 app.use(auth);
-
 app.use("/cards", cardsRoutes);
 app.use("/users", usersRoutes);
 

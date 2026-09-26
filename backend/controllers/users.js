@@ -6,9 +6,7 @@ const {
   UnauthorizedError,
 } = require("../middleware/errorHandler");
 
-import dotenv from "dotenv";
-
-dotenv.config();
+require("dotenv").config();
 
 const { NODE_ENV = "local", JWT_SECRET = "" } = process.env;
 
